@@ -1,20 +1,13 @@
 package pageObjects;
 
-import java.util.List;
+import java.util.Properties;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import com.gargoylesoftware.htmlunit.javascript.host.dom.Document;
-import com.gargoylesoftware.htmlunit.javascript.host.dom.ShadowRoot;
 import com.mycompany.app.Base;
-
-import io.github.sukgu.Shadow;
 
 public class ToDoPage extends Base {
 
@@ -27,7 +20,7 @@ public class ToDoPage extends Base {
 
 	By newToDo = By.id("new-todo");
 
-	By toDoItem = By.xpath("//label[contains(text(),'Test2')]");
+	By toDoItem = By.xpath("//li[2]//div[1]//label[1]");
 
 	By editItem = By.id("edit");
 

@@ -21,8 +21,8 @@ public class HomePage extends Base {
 	@BeforeTest
 	public void baseNavigation() throws IOException {
 		driver = initializeDriver();
-		// WebDriverWait wait = new WebDriverWait(driver, 10);
-		driver.get("http://todomvc.com/");
+
+		driver.get(prop.getProperty("url"));
 		driver.manage().window().maximize();
 
 	}
@@ -44,18 +44,19 @@ public class HomePage extends Base {
 		// actions class instance
 		Actions action = new Actions(driver);
 
-		action.moveToElement(t.newTodo()).sendKeys("Test").build().perform();
+		// Add first todo item
+		action.moveToElement(t.newTodo()).sendKeys(prop.getProperty("testData")).build().perform();
 		action.moveToElement(t.newTodo()).sendKeys(Keys.ENTER).build().perform();
-		action.moveToElement(t.newTodo()).sendKeys("Test2").build().perform();
-		action.moveToElement(t.newTodo()).sendKeys(Keys.ENTER).build().perform();
+
+		// Add second todo item
+		action.moveToElement(t.newTodo()).sendKeys(prop.getProperty("testDataName")).build().perform();
 		action.moveToElement(t.newTodo()).sendKeys(Keys.ENTER).build().perform();
 
 		action.moveToElement(t.todoItem()).sendKeys(Keys.DOWN).build().perform();
-		action.moveToElement(t.todoItem()).sendKeys(Keys.DOWN).build().perform();
-
 		action.moveToElement(t.todoItem()).doubleClick().build().perform();
 
-		action.moveToElement(t.editToDoItem()).sendKeys("Edit").build().perform();
+		// Edit second todoItem
+		action.moveToElement(t.editToDoItem()).sendKeys(prop.getProperty("testDataEdit")).build().perform();
 
 	}
 

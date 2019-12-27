@@ -5,8 +5,10 @@
     <classes>
       <class name="com.mycompany.app.HomePage">
         <methods>
-          <include name="ToDoPageTest"/>
           <include name="baseNavigation"/>
+          <include name="landingPageTest"/>
+          <include name="toDoPageTest"/>
+          <include name="quitBrowser"/>
         </methods>
       </class> <!-- com.mycompany.app.HomePage -->
     </classes>
