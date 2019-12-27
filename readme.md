@@ -14,9 +14,9 @@
 		2. Click within the JavaScript Tab
 		3. Select the polymer link
 		4. Add two todo items
-		5.Edit the content of the second todoItem
+		5. Edit the content of the second todoItem
 
-	3. Design Pattern: Page Object Model (src/test/java/objectmodels)
+	3. Design Pattern: Page Object Model (src/main/java/pageobjets)
 	4. Browsers configured
 		1. ChromeDriver (For both MAC and Windows)
 		2. FirefoxDriver (For both MAC and Windows)
@@ -31,10 +31,9 @@
 	
 	### For End to End Automation Tests
 		1. Navigate to project
-		2. Open “data.properties” file
-		3. Provide the correct values for eBay USERNAME (endToEndAutomationTest.username) and PASSWORD (endToEndAutomationTest.password)
-		4. Default browser is set to Google Chrome. If you want to change that to Mozilla Firefox, please mention ‘firefox’ in the Browser (endToEndAutomationTest.selenium.browser)
-		5. Navigate to src/test/java/com.mycompany.app
-		6. Right click on HomePage.java and Run as ‘TestNg Test’
+		2. Open “data.properties” file to view the test data
+		3. Default browser is set to Google Chrome.
+		4. Navigate to src/test/java/com.mycompany.app
+		5. Right click on HomePage.java and Run as ‘TestNg Test’
 
 
