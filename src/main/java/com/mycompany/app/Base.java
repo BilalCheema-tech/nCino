@@ -43,6 +43,10 @@ public class Base {
 
 			driver = new FirefoxDriver();
 		}
+		else
+		{
+			System.out.println("Driver not found");
+		}
 
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		return driver;

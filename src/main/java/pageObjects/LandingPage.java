@@ -10,8 +10,7 @@ public class LandingPage {
 
 	public WebDriver driver;
 
-	By javascriptTab = By
-			.xpath("//div[contains(concat(' ', normalize-space(@class), ' '), ' tab-content flex-auto ')]");
+	By javascriptTab = By.cssSelector("paper-tab[data-target=js]");
 	By polymerLink = By.xpath("//a[contains(@href,'examples/polymer')]");
 
 	public LandingPage(WebDriver driver) {

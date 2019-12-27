@@ -1,13 +1,13 @@
 package com.mycompany.app;
 
+import static org.testng.Assert.assertEquals;
+
 import java.io.IOException;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
+
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -45,18 +45,34 @@ public class HomePage extends Base {
 		Actions action = new Actions(driver);
 
 		// Add first todo item
-		action.moveToElement(t.newTodo()).sendKeys(prop.getProperty("testData")).build().perform();
+
+		String testData = prop.getProperty("testData");
+		action.moveToElement(t.newTodo()).sendKeys(testData).build().perform();
+
+		assertEquals(testData, "Hi");
+
 		action.moveToElement(t.newTodo()).sendKeys(Keys.ENTER).build().perform();
 
 		// Add second todo item
-		action.moveToElement(t.newTodo()).sendKeys(prop.getProperty("testDataName")).build().perform();
+		String testDataName = prop.getProperty("testDataName");
+		action.moveToElement(t.newTodo()).sendKeys(testDataName).build().perform();
+		assertEquals(testDataName, "Aaron.");
 		action.moveToElement(t.newTodo()).sendKeys(Keys.ENTER).build().perform();
 
 		action.moveToElement(t.todoItem()).sendKeys(Keys.DOWN).build().perform();
 		action.moveToElement(t.todoItem()).doubleClick().build().perform();
 
 		// Edit second todoItem
-		action.moveToElement(t.editToDoItem()).sendKeys(prop.getProperty("testDataEdit")).build().perform();
+
+		for (int i = 0; i < testDataName.length(); i++) {
+
+			action.moveToElement(t.editToDoItem()).sendKeys(Keys.BACK_SPACE).build().perform();
+
+		}
+
+		String testDataEdit = prop.getProperty("testDataEdit");
+		action.moveToElement(t.editToDoItem()).sendKeys(testDataEdit).build().perform();
+		assertEquals(testDataEdit, "How are you");
 
 	}
 

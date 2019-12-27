@@ -6,7 +6,6 @@
       <class name="com.mycompany.app.HomePage">
         <methods>
           <include name="baseNavigation"/>
-          <include name="landingPageTest"/>
           <include name="toDoPageTest"/>
           <include name="quitBrowser"/>
         </methods>
