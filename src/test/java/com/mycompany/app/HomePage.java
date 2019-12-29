@@ -2,6 +2,8 @@ package com.mycompany.app;
 
 import static org.testng.Assert.assertEquals;
 
+import java.awt.AWTException;
+
 import java.io.IOException;
 
 import org.openqa.selenium.Keys;
@@ -37,7 +39,7 @@ public class HomePage extends Base {
 	}
 
 	@Test(priority = 2)
-	public void toDoPageTest() throws InterruptedException {
+	public void toDoPageTest() throws InterruptedException, AWTException {
 		// object of ToDo Page
 		ToDoPage t = new ToDoPage(driver);
 
@@ -47,32 +49,46 @@ public class HomePage extends Base {
 		// Add first todo item
 
 		String testData = prop.getProperty("testData");
-		action.moveToElement(t.newTodo()).sendKeys(testData).build().perform();
 
-		assertEquals(testData, "Hi");
-
-		action.moveToElement(t.newTodo()).sendKeys(Keys.ENTER).build().perform();
+		t.newTodo().sendKeys(testData);
+		t.newTodo().sendKeys(Keys.ENTER);
 
 		// Add second todo item
 		String testDataName = prop.getProperty("testDataName");
-		action.moveToElement(t.newTodo()).sendKeys(testDataName).build().perform();
-		assertEquals(testDataName, "Aaron.");
-		action.moveToElement(t.newTodo()).sendKeys(Keys.ENTER).build().perform();
 
-		action.moveToElement(t.todoItem()).sendKeys(Keys.DOWN).build().perform();
-		action.moveToElement(t.todoItem()).doubleClick().build().perform();
+		t.newTodo().sendKeys(testDataName);
+		t.newTodo().sendKeys(Keys.ENTER);
+
+		String testDataCheck = t.todoItem1().getText();
+
+		// Assertion to check first todoItem actual value is same as expected
+		assertEquals(testDataCheck, testData);
+
+		String testDataNameCheck = t.todoItem2().getText();
+
+		// Assertion to check second todoItem actual value is same as expected
+		assertEquals(testDataNameCheck, testDataName);
+
+		action.moveToElement(t.todoItem2()).sendKeys(Keys.DOWN).doubleClick().build().perform();
 
 		// Edit second todoItem
 
 		for (int i = 0; i < testDataName.length(); i++) {
 
+			// using action class as element was not interactable
 			action.moveToElement(t.editToDoItem()).sendKeys(Keys.BACK_SPACE).build().perform();
 
 		}
 
 		String testDataEdit = prop.getProperty("testDataEdit");
-		action.moveToElement(t.editToDoItem()).sendKeys(testDataEdit).build().perform();
-		assertEquals(testDataEdit, "How are you");
+
+		t.editToDoItem().sendKeys(testDataEdit);
+		t.editToDoItem().sendKeys(Keys.ENTER);
+
+		String testDataEditCheck = t.todoItem2().getText();
+
+		// Assertion to check second todoItem edited value is same as expected
+		assertEquals(testDataEditCheck, testDataEdit);
 
 	}
 
@@ -80,6 +96,7 @@ public class HomePage extends Base {
 	public void quitBrowser() {
 
 		driver.quit();
+		System.out.println("Browser closed after Tests ");
 	}
 
 }

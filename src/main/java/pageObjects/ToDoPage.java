@@ -18,7 +18,9 @@ public class ToDoPage extends Base {
 
 	By newToDo = By.id("new-todo");
 
-	By toDoItem = By.xpath("//li[2]//div[1]//label[1]");
+	By toDoItem1 = By.xpath("//li[1]//div[1]//label[1]");
+	By toDoItem2 = By.xpath("//li[2]//div[1]//label[1]");
+	
 
 	By editItem = By.id("edit");
 
@@ -28,8 +30,12 @@ public class ToDoPage extends Base {
 
 	}
 
-	public WebElement todoItem() {
-		return driver.findElement(toDoItem);
+	public WebElement todoItem1() {
+		return driver.findElement(toDoItem1);
+	}
+	
+	public WebElement todoItem2() {
+		return driver.findElement(toDoItem2);
 	}
 
 	public WebElement editToDoItem() {
